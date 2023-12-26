@@ -1,4 +1,5 @@
 # Neuro Vision Transformer (NeuroViT)
+![image](https://github.com/AliAmini93/Neuro-Vision-Transformer/assets/96921261/cd427b3b-f8fd-470c-9b5a-415cd9e13fe3)
 
 ## Overview
 
