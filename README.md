@@ -1,1 +1,1 @@
-# Neuro-Vision-Transformer
+# Neuro Vision Transformer (Neuro ViT)
