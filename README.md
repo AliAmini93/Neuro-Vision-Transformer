@@ -97,7 +97,7 @@ A crucial element in adapting the Vision Transformer for EEG data is the PatchEn
 
 The implementation of the PatchEncoder is vital for the model to understand the spatial relationship between different parts of the EEG signals.
 
-### Construction of the Vision Transformer (ViT) Model
+### Construction of the NeuroViT Model
 
 The core of our project is the custom-built Vision Transformer (ViT) model, designed specifically for classifying EEG signals into ADHD and control categories.
 
