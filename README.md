@@ -1,8 +1,8 @@
-# Neuro Vision Transformer (Neuro ViT)
+# Neuro Vision Transformer (NeuroViT)
 
 ## Overview
 
-Neuro ViT is an innovative approach to EEG signal classification, leveraging the power of the Vision Transformer (ViT) model to distinguish between individuals with ADHD and healthy controls. This project is at the forefront of applying transformer models, typically used in image processing, to the realm of EEG data analysis.
+NeuroViT is an innovative approach to EEG signal classification, leveraging the power of the Vision Transformer (ViT) model to distinguish between individuals with ADHD and healthy controls. This project is at the forefront of applying transformer models, typically used in image processing, to the realm of EEG data analysis.
 
 ### Key Features
 - **Custom EEG Data Processing**: EEG signals, with an input size of (19,512) representing 19 electrodes and 512 time-steps, are preprocessed and divided into patches, analogous to image patch processing in ViT models.
@@ -24,8 +24,8 @@ The EEG dataset used in this project is derived from the original dataset availa
 - **Frequency**: 128 Hz sampling.
 - **Protocol**: Based on visual attention tasks with varying durations, dependent on each child’s response time.
 
-### Dataset Adaptation for Neuro ViT
-The dataset used in this project is a modified version of the original, specifically adapted for the Neuro ViT model. 
+### Dataset Adaptation for NeuroViT
+The dataset used in this project is a modified version of the original, specifically adapted for the NeuroViT model. 
 
 #### Preprocessing Details
 - **Sample Structure**: Non-overlapping 4-second samples of raw continuous EEG signals.
@@ -37,7 +37,7 @@ This preprocessing approach provides a comprehensive view of brain activity, ena
 
 ### Data Loading and Preprocessing
 
-In the initial phase of our analysis, we focus on preparing the EEG dataset for the Neuro ViT model. This involves several key steps:
+In the initial phase of our analysis, we focus on preparing the EEG dataset for the NeuroViT model. This involves several key steps:
 
 - **Data Loading**: We load the EEG feature data (`X.npy`) and the corresponding labels (`Y.npy`), ensuring that we have a clear understanding of the dataset's structure.
 - **Segment Processing**: Information about EEG signal segments per subject is loaded and processed. This step is crucial for understanding the distribution of data across different participants.
@@ -45,11 +45,11 @@ In the initial phase of our analysis, we focus on preparing the EEG dataset for 
 - **Data Splitting**: We employ stratified K-Fold cross-validation to split the dataset into training and testing sets. This ensures a representative distribution across different sets and is vital for the model's generalizability.
 - **Data Reshaping and Label Processing**: The feature data is reshaped to fit the model's input requirements, and labels are processed into a categorical format, suitable for classification tasks.
 
-This preprocessing pipeline is essential to ensure that the EEG data is in the appropriate format for effective analysis using the Neuro ViT model.
+This preprocessing pipeline is essential to ensure that the EEG data is in the appropriate format for effective analysis using the NeuroViT model.
 
 ### Model Configuration and Hyperparameters
 
-Setting up the right configuration and hyperparameters is crucial for the optimal performance of the Neuro ViT model. The following parameters were carefully selected to tailor the model specifically for EEG signal classification:
+Setting up the right configuration and hyperparameters is crucial for the optimal performance of the NeuroViT model. The following parameters were carefully selected to tailor the model specifically for EEG signal classification:
 
 - **Learning Rate**: Set at 0.001, this parameter controls the rate at which our model updates its weights during training.
 - **Weight Decay**: A factor of 0.0001 is used for regularization, helping to prevent overfitting.
@@ -64,7 +64,7 @@ Setting up the right configuration and hyperparameters is crucial for the optima
 
 ### Custom Patch Extraction Layer
 
-An essential step in adapting the Vision Transformer model for EEG data analysis is the creation of a custom layer for patch extraction. This layer is a pivotal part of the Neuro ViT model, enabling the transformation of EEG signals into a format that the transformer can process effectively.
+An essential step in adapting the Vision Transformer model for EEG data analysis is the creation of a custom layer for patch extraction. This layer is a pivotal part of the NeuroViT model, enabling the transformation of EEG signals into a format that the transformer can process effectively.
 
 - **Custom Layer 'Patches'**: This layer is designed to handle EEG data which is fundamentally different from natural images typically used in ViT models.
 - **Functionality**:
@@ -76,14 +76,14 @@ This custom layer is integral to the model’s ability to understand and interpr
 
 ### Multilayer Perceptron (MLP) in the EEG Transformer Model
 
-A key component in the architecture of the Neuro ViT model is the Multilayer Perceptron (MLP). This component plays a crucial role in processing and classifying the EEG data.
+A key component in the architecture of the NeuroViT model is the Multilayer Perceptron (MLP). This component plays a crucial role in classifying the EEG data.
 
 - **Functionality of MLP**: The MLP is a sequence of layers in our model that works on the features extracted by the transformer. It helps in further refining and interpreting these features for classification purposes.
 - **Structure**:
   - **Dense Layers with GELU Activation**: The MLP consists of dense layers, each followed by GELU (Gaussian Error Linear Unit) activation. This choice of activation function is crucial for capturing the non-linear relationships in the data.
   - **Dropout for Regularization**: To prevent overfitting, dropout layers are incorporated. The dropout rate is a hyperparameter that can be tuned based on the model's performance.
 
-The design and implementation of the MLP are tailored to complement the transformer architecture, ensuring that the Neuro ViT model is robust and effective for EEG signal classification tasks.
+The design and implementation of the MLP are tailored to complement the transformer architecture, ensuring that the NeuroViT model is robust and effective for EEG signal classification tasks.
 
 ### Patch Encoding with Positional Information
 
@@ -108,4 +108,36 @@ The core of our project is the custom-built Vision Transformer (ViT) model, desi
   - **Output Representation**: The output of the transformer layers is flattened and passed through dropout layers for regularization.
   - **Classification Layer**: Finally, an MLP is used for feature extraction, and a dense layer with softmax activation performs the classification.
 
+### Training and Evaluation of the NeuroViT Model
+
+The training and evaluation phase is crucial in determining the effectiveness of the NeuroViT model in classifying EEG data for ADHD and control groups.
+
+- **Model Compilation**:
+  - The model is compiled with an AdamW optimizer, incorporating both the specified learning rate and weight decay for better training dynamics.
+  - Binary Cross entropy is used as the loss function.
+  - Accuracy is tracked as the performance metric.
+
+- **Checkpointing**:
+  - Model checkpoints are created to save the best version of the model based on validation accuracy. This approach is essential to capture the most effective state of the model during training.
+
+- **Model Training**:
+  - The model is trained, using a batch size of 32 and iterating for 100 epochs.
+  - Validation data is used to monitor the model's performance on unseen data.
+
+- **Model Evaluation**:
+  - After training, the best model weights are loaded, and the model is evaluated on the test dataset.
+  - The test accuracy is reported.
+
+
+
+### Dataset Availability
+The modified EEG dataset utilized in this project is available for researchers and developers interested in EEG signal classification and analysis. For access to this modified dataset and further details, please [contact us](ali.amini.scholar@gmail.com).
+
+
+### Contributions
+Your contributions will help make this project more robust and beneficial for the community. We look forward to collaborating with you!
+
+---
+
+*This project is part of an ongoing effort to apply advanced machine learning techniques for meaningful real-world applications, particularly in the field of healthcare and neuroimaging.*
 
