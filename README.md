@@ -12,8 +12,28 @@ Neuro ViT is an innovative approach to EEG signal classification, leveraging the
   - **Transformer Architecture**: Comprises 6 transformer layers, each with multi-head attention, layer normalization, and MLP layers, fine-tuned for EEG data.
 - **EEG Data Classification**: Focused on classifying between ADHD and healthy control subjects, demonstrating the potential of ViT in medical diagnostics.
 
-### Dataset
-The EEG dataset used in this project consists of signals recorded at 128Hz, covering 4-second intervals across 19 electrodes. This rich dataset provides a comprehensive view of brain activity, enabling the deep learning model to discern patterns indicative of ADHD.
+### Dataset Overview
+The EEG dataset used in this project is derived from the original dataset available at [EEG Data of ADHD and Control Children](https://ieee-dataport.org/open-access/eeg-data-adhd-control-children). This dataset includes EEG recordings from 61 children with ADHD and 60 healthy controls, aged 7-12. 
 
-This project not only demonstrates the adaptability of ViT models to new domains but also opens up new avenues in the application of deep learning for medical diagnostics, particularly in neuroimaging and mental health.
+#### Participant Profile
+- **ADHD Group**: Diagnosed according to DSM-IV criteria, under Ritalin treatment for up to 6 months.
+- **Control Group**: Children with no history of psychiatric disorders, epilepsy, or high-risk behaviors.
+
+#### Recording Methodology
+- **Standard**: 10-20 system across 19 channels (Fz, Cz, Pz, C3, T3, C4, T4, Fp1, Fp2, F3, F4, F7, F8, P3, P4, T5, T6, O1, O2).
+- **Frequency**: 128 Hz sampling.
+- **Protocol**: Based on visual attention tasks with varying durations, dependent on each child’s response time.
+
+### Dataset Adaptation for Neuro ViT
+The dataset used in this project is a modified version of the original, specifically adapted for the Neuro ViT model. 
+
+#### Preprocessing Details
+- **Sample Structure**: Non-overlapping 4-second samples of raw continuous EEG signals.
+- **Participants**: Includes both ADHD and control participants from the original dataset.
+- **Objective**: Ensures a consistent and focused analysis of EEG data for the ViT model.
+
+#### Significance
+This preprocessing approach provides a comprehensive view of brain activity, enabling the deep learning model to discern patterns indicative of ADHD, thus demonstrating the adaptability of ViT models to new domains in medical diagnostics.
+
+
 
